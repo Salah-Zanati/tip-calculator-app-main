@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+:root {
+    /* Primary */
+    --Color-Res-Font: hsl(172, 67%, 45%); /* Strong Cazy */
+    /* Nautral */
+    --color-Divs-BG: hsl(183, 100%, 15%); /* Very dark cyan */
+    --Color-Font-1: hsl(186, 14%, 43%); /* Dark grayish cyan */
+    --Color-Button-BG: hsl(184, 14%, 56%); /* Grayish cyan */
+    --Color-Body-BG: hsl(185, 41%, 84%); /* Light grayish cyan */
+    --Color-Boxes-BG: hsl(189, 41%, 97%); /* Very light grayish cyan */
+    --Color-Main-BG: hsl(0, 0%, 100%); /* White */
+    --Font-Family: 'Space Mono', monospace;
+    --Font-Size: 24px; /* form inputs */
+
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: var(--Font-Family);
+    font-size: var(--Font-Size);
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--Color-Body-BG);
+}
+.container .box {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--Color-Main-BG);
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 30px;
+    height: 60%;
+    width: 65%;
+}
+@media (max-width:767px) {
+    .container .box {
+        flex-direction: column;
+        width: 80%;
+        flex-basis: 88%;
+    }
+}
+@media (max-width:376px) {
+    .container .box {
+        flex-basis: 88%;
+        flex-direction: column;
+        width: 100%;
+    }
+    .container .box img {
+        flex-basis: 20%;
+    }
+}
+.container .box .inputs {
+    flex-basis: 48%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+}
+/* ---Bill & People--- */
+.container .inputs .bill,
+.container .inputs .people {
+    display: flex;
+    position: relative;
+
+}
+.container .inputs .bill input,
+.container .inputs .people input {
+    color:var(--color-Divs-BG);
+    text-align: right
+}
+.container .inputs .bill input:focus,
+.container .inputs .people input:focus {
+    outline: var(--Color-Res-Font) 2px solid;
+    border-radius: 5px;
+}
+.inputs .bill::before,
+.inputs .people::before {
+    content: "Bill";
+    position: absolute;
+    font-size: 13px;
+    color: var(--Color-Button-BG);
+    top: -20px;
+    left: 5px;
+
+}
+.inputs .people::before {
+    content: 'Number of people';
+}
+.inputs .people.error {
+    outline: #e00 2px solid;
+    border-radius: 5px;
+}
+.inputs .people.error::after {
+    content: "Can't be zero";
+    position: absolute;
+    font-size: 13px;
+    color: #e00;
+    top: -20px;
+    right: 5px;
+}
+.inputs .bill img,
+.inputs .people img {
+    position: absolute;
+    width: 12px;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+}
+
+.inputs .bill input,
+.inputs .people input {
+    padding: 5px 5px 5px calc(3% + 12px);
+    border: none;
+    background-color: var(--Color-Boxes-BG);
+    width: 100%;
+}
+
+.inputs .bill input::placeholder,
+.inputs .people input::placeholder {
+    position: absolute;
+    right: 3%;
+    top: 0;
+}
+.inputs .select-tip div input {
+    background-color: var(--Color-Boxes-BG);
+    padding: 0;
+}
+/* ---Select Tip--- */
+.container .select-tip {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 10px;
+    position: relative;
+    
+}
+.container .select-tip::before {
+    content: 'Select Tip %';
+    position: absolute;
+    font-size: 13px;
+    color: var(--Color-Button-BG);
+    top: -25px;
+    left: 5px;
+    margin-top: 5px;
+}
+.container .select-tip div {
+    width: 100%;
+    background-color: var(--color-Divs-BG);
+    text-align: center;
+    border-radius: 5px;
+    font-size: calc(var(--Font-Size)-10px);
+    padding: 3px 0;
+    cursor: pointer;
+}
+.container .select-tip .div.clicked {
+    background-color: var(--Color-Res-Font);
+}
+.container .select-tip .div.clicked p {
+    color: var(--color-Divs-BG);
+}
+.inputs .select-tip div:last-child {
+    background-color: var(--Color-Boxes-BG);
+}
+.inputs .select-tip div:last-child input{
+    background-color: var(--Color-Boxes-BG);
+    text-align: center;
+    border-radius: 5px;
+    font-size: calc(var(--Font-Size)-10px);
+    padding: 3px 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--color-Divs-BG)
+}
+.inputs .select-tip div:last-child input:focus {
+    outline: var(--Color-Res-Font) 2px solid;
+    border-radius: 5px;
+}
+.container .select-tip div p {
+    color: white;
+}
+/* ---Res--- */
+.container .box .res {
+    flex-basis: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-Divs-BG);
+    border-radius: 10px;
+    padding: 40px;
+}
+@media (max-width:992px) {
+    .container .box .res {
+        padding: 30px;
+    }
+}
+.box .res .result {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.box .res .result .tip-amount,
+.box .res .result .total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.box .res .result p {
+    color: var(--Color-Boxes-BG);
+    font-size: 14px;
+    line-height: 14px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-10%);
+}
+.box .res .result p::after {
+    content: '/ person';
+    position: absolute;
+    font-size: 10px;
+    color: var(--Color-Button-BG);
+    left: 0;
+    bottom: 15px;
+    width: 130%;
+}
+@media (max-width:992px) {
+    .box .res .result p::after {
+    bottom: 5px;
+    }
+}
+.box .res .result span {
+    display: flex;
+    flex-direction: row;
+}
+.box .res .result span img {
+    height: 25px;
+    top: 12px;
+    position: relative;
+    left: -2px;    
+}
+.box .res .result span h1 {
+    color: var(--Color-Res-Font);
+    margin: 0;
+    font-size: 40px;
+}
+@media (max-width:992px) {
+    .box .res .result span h1 {
+        font-size: 35px;
+    }
+    .box .res .result span img {
+        height: 23px;
+        top: 10px;
+    }
+}
+.box .res .rest-btn input {
+    border: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 6px;
+    background-color: hsl(172deg 67% 45% / 30%);
+    color: var(--color-Divs-BG);
+    cursor: pointer;
+    transition: .3s;    
+}
+
+.box .res .rest-btn input:hover {
+    background-color: var(--Color-Res-Font);
+}
